@@ -1,27 +1,25 @@
-# Coin Collector - Assignment (Python server + HTML client)
+# Coin Collector
 
-## Overview
-This is a minimal submission that satisfies:
-- Authoritative server (Python `server.py`) tracking positions, coins, scoring.
-- Two browser clients (`client.html`) connecting via WebSocket.
-- 200ms artificial latency simulated on both directions.
-- Client interpolation to smooth remote player motion.
+Multiplayer coin collecting game — two players compete in real time to grab coins faster than each other.
 
-## Requirements
-- Python 3.8+
-- `websockets` Python package
-- A browser (Chrome/Edge)
-- Optional: `python -m http.server` to serve client files
+Built with a Python WebSocket server that acts as the authority for all game state, and a plain HTML/JS client. No frameworks.
 
-## Run locally
-1. Create & activate virtual env (optional):
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # or venv\Scripts\activate on Windows
-   pip install websockets
-## 🖼 Game Screenshot
-![Game Screenshot](./Screenshot.png)
+## How it works
 
-## 🎥 Demo Video
-https://drive.google.com/file/d/1Rr736Lk9NQjuzL3JP1naCmpk6BSbQ9pf/view?usp=sharing
+Server tracks everything — positions, coins, scores. Clients just send inputs and render what the server says. This prevents cheating and keeps both clients in sync.
 
+Added 200ms artificial latency on both sides to simulate real network conditions, with client side interpolation so movement stays smooth despite the delay.
+
+## Run it
+```bash
+pip install websockets
+python server.py
+```
+
+Open `client.html` in two browser tabs.
+
+## Demo
+
+[Video](https://drive.google.com/file/d/1Rr736Lk9NQjuzL3JP1naCmpk6BSbQ9pf/view?usp=sharing)
+
+![screenshot](./Screenshot.png)
