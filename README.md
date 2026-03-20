@@ -4,7 +4,7 @@ Multiplayer coin collecting game built with a Python WebSocket server and plain 
 
 ## Architecture
 
-Authoritative server model — server owns all game state (positions, coins, scores). Clients send inputs and render server state only.
+Authoritative server model server owns all game state (positions, coins, scores). Clients send inputs and render server state only.
 
 - 200ms artificial latency on both directions
 - Client side interpolation for smooth movement under latency
