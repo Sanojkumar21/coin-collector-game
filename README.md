@@ -1,16 +1,15 @@
 # Coin Collector
 
-Multiplayer coin collecting game — two players compete in real time to grab coins faster than each other.
+Multiplayer coin collecting game built with a Python WebSocket server and plain HTML/JS client.
 
-Built with a Python WebSocket server that acts as the authority for all game state, and a plain HTML/JS client. No frameworks.
+## Architecture
 
-## How it works
+Authoritative server model — server owns all game state (positions, coins, scores). Clients send inputs and render server state only.
 
-Server tracks everything — positions, coins, scores. Clients just send inputs and render what the server says. This prevents cheating and keeps both clients in sync.
+- 200ms artificial latency on both directions
+- Client side interpolation for smooth movement under latency
 
-Added 200ms artificial latency on both sides to simulate real network conditions, with client side interpolation so movement stays smooth despite the delay.
-
-## Run it
+## Setup
 ```bash
 pip install websockets
 python server.py
